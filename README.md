@@ -13,6 +13,7 @@ people (
     Heck, 0, Jess, 2  
     Perry, 1, Jess, 2  
     Luke Skywalker, 1, Darth Vader, 3  
+    add more people  
 )  
 ### Position calculation  
 find generation of parent and add 1 to find generation of new person.  
