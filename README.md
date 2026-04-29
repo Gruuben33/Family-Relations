@@ -1,19 +1,19 @@
 # Family-Relations
 class person has name, gender, parent, and generation. Generation is not an input but calculated.  
 people (  
-    John, 1, none, 0  
-    Paul, 1, John, 1  
-    Cale, 1, John, 1  
-    Jess, 1, John, 1  
-    Martha, 0, Paul, 2  
-    Steve, 1, Paul, 2  
-    Jeff, 1, Cale, 2  
-    Mike, 1, Cale, 2  
-    Darth Vader, 1, Cale, 2  
-    Heck, 0, Jess, 2  
-    Perry, 1, Jess, 2  
-    Luke Skywalker, 1, Darth Vader, 3  
-    add more people  
+John, 1, none, 0  
+Paul, 1, John, 1  
+Cale, 1, John, 1  
+Jess, 1, John, 1  
+Martha, 0, Paul, 2  
+Steve, 1, Paul, 2  
+Jeff, 1, Cale, 2  
+Mike, 1, Cale, 2  
+Darth Vader, 1, Cale, 2  
+Heck, 0, Jess, 2  
+Perry, 1, Jess, 2  
+Luke Skywalker, 1, Darth Vader, 3  
+add more people  
 )  
 ### Position calculation  
 find generation of parent and add 1 to find generation of new person.  
@@ -29,46 +29,46 @@ let gendiff = gen1 - gen2
 ###### Same generation  
 if gendiff == 0  
 {possible relations are simbling, cousin, self}  
-    if parent1 == parent2  
-    {possible relations are sibling, self}  
-        if person A name == person B name  
-        return {relation is self}  
-        else  
-        return {relation is sibling}  
-    else  
-    return {relation is cousin}  
+&nbsp;if parent1 == parent2  
+&nbsp;{possible relations are sibling, self}  
+&nbsp;&nbsp;if person A name == person B name  
+&nbsp;&nbsp;return {relation is self}  
+&nbsp;&nbsp;else  
+&nbsp;&nbsp;return {relation is sibling}  
+&nbsp;else  
+&nbsp;return {relation is cousin}  
 
 ###### Person A is later generation  
 else if gendiff < 0  
 {possible relations are child, nephew/niece, grandchild, great ... grandchild}  
-    if gendiff == -1  
-    {possible relations are child, nephew/niece}  
-        if parent1 == person B name  
-        return {relation is child}  
-        else  
-            if person A gender == 0  
-            return {relation is niece}  
-            else  
-            return {relation is nephew}  
-    else  
-    {possible relations are grandchild, great ... grandchild}  
-    return {relation is (# of greats = -gendiff - 2) grandchild}  
+&nbsp;if gendiff == -1  
+&nbsp;{possible relations are child, nephew/niece}  
+&nbsp;&nbsp;if parent1 == person B name  
+&nbsp;&nbsp;return {relation is child}  
+&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;if person A gender == 0  
+&nbsp;&nbsp;&nbsp;return {relation is niece}  
+&nbsp;&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;return {relation is nephew}  
+&nbsp;else  
+&nbsp;{possible relations are grandchild, great ... grandchild}  
+&nbsp;return {relation is (# of greats = -gendiff - 2) grandchild}  
 
 ###### Person A is earlier generation  
 else if gendiff > 0  
 {possible relations are parent, uncle/aunt, grandparent, great ... grandparent}  
-    if gendiff == 1  
-    {possible relations are parent, uncle/aunt}  
-        if parent2 == person A name  
-        return {relation is parent}  
-        else  
-            if person B gender == 0  
-            return {relation is aunt}  
-            else  
-            return {relation is uncle}  
-    else  
-    {possible relations are grnadparent, great ... grandparent}  
-    return {relation is (# of great = gendiff - 2) grandparent}  
+&nbsp;if gendiff == 1  
+&nbsp;{possible relations are parent, uncle/aunt}  
+&nbsp;&nbsp;if parent2 == person A name  
+&nbsp;&nbsp;return {relation is parent}  
+&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;if person B gender == 0  
+&nbsp;&nbsp;&nbsp;return {relation is aunt}  
+&nbsp;&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;return {relation is uncle}  
+&nbsp;else  
+&nbsp;{possible relations are grnadparent, great ... grandparent}  
+&nbsp;return {relation is (# of great = gendiff - 2) grandparent}  
 
 
 # main  
