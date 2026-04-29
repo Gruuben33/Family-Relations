@@ -17,7 +17,7 @@ people (
 ### Position calculation  
 find generation of parent and add 1 to find generation of new person.  
 
-### Check lineage function  
+## Check lineage function  
 inputs(person A, person B)  
 let gen1 = person A generation  
 let gen2 = person B generation  
@@ -70,7 +70,7 @@ else if gendiff > 0
     return {relation is (# of great = gendiff - 2) grandparent}  
 
 
-### main  
+# main  
 create empty array  
 push the list of new people into array  
 print the names of everyone (figure out a sensible way to present family tree)  
