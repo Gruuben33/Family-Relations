@@ -26,20 +26,8 @@ let parent1 = person A parent
 let parent2 = person B parent  
 let gendiff = gen1 - gen2  
 
-###### Same generation  
-if gendiff == 0  
-{possible relations are simbling, cousin, self}  
-&nbsp;if parent1 == parent2  
-&nbsp;{possible relations are sibling, self}  
-&nbsp;&nbsp;if person A name == person B name  
-&nbsp;&nbsp;return {relation is self}  
-&nbsp;&nbsp;else  
-&nbsp;&nbsp;return {relation is sibling}  
-&nbsp;else  
-&nbsp;return {relation is cousin}  
-
 ###### Person A is later generation  
-else if gendiff < 0  
+if gendiff < 0  
 {possible relations are child, nephew/niece, grandchild, great ... grandchild}  
 &nbsp;if gendiff == -1  
 &nbsp;{possible relations are child, nephew/niece}  
@@ -51,6 +39,7 @@ else if gendiff < 0
 &nbsp;&nbsp;&nbsp;else  
 &nbsp;&nbsp;&nbsp;return {relation is nephew}  
 &nbsp;else  
+&nbsp;&nbsp;if (expand)
 &nbsp;{possible relations are grandchild, great ... grandchild}  
 &nbsp;return {relation is (# of greats = -gendiff - 2) grandchild}  
 
@@ -69,6 +58,18 @@ else if gendiff > 0
 &nbsp;else  
 &nbsp;{possible relations are grnadparent, great ... grandparent}  
 &nbsp;return {relation is (# of great = gendiff - 2) grandparent}  
+
+###### Same generation  
+else if gendiff == 0  
+{possible relations are simbling, cousin, self}  
+&nbsp;if parent1 == parent2  
+&nbsp;{possible relations are sibling, self}  
+&nbsp;&nbsp;if person A name == person B name  
+&nbsp;&nbsp;return {relation is self}  
+&nbsp;&nbsp;else  
+&nbsp;&nbsp;return {relation is sibling}  
+&nbsp;else  
+&nbsp;return {relation is cousin}  
 
 
 # main  
