@@ -1,18 +1,18 @@
 # Family-Relations
-class person has name, gender, parent, and generation. Generation is not an input but calculated.  
+class person has name, slot, gender, parentslot, and generation. Generation is not an input but calculated.  
 people (  
-John, 1, none, 0  
-Paul, 1, John, 1  
-Cale, 1, John, 1  
-Jess, 1, John, 1  
-Martha, 0, Paul, 2  
-Steve, 1, Paul, 2  
-Jeff, 1, Cale, 2  
-Mike, 1, Cale, 2  
-Darth Vader, 1, Cale, 2  
-Heck, 0, Jess, 2  
-Perry, 1, Jess, 2  
-Luke Skywalker, 1, Darth Vader, 3  
+John,           0, 1, null, 0  
+Paul,           1, 1, 0, 1  
+Cale,           2, 1, 0, 1  
+Jess,           3, 1, 0, 1  
+Martha,         4, 0, 1, 2  
+Steve,          5, 1, 1, 2  
+Jeff,           6, 1, 2, 2  
+Mike,           7, 1, 2, 2  
+Darth Vader,    8, 1, 2, 2  
+Heck,           9, 0, 3, 2  
+Perry,         10, 1, 3, 2  
+Luke Skywalker,11, 1, 8, 3  
 add more people  
 )  
 ### Position calculation  
