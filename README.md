@@ -1,17 +1,17 @@
 # Family-Relations
 class person has name, slot, gender, parentslot, and generation. Generation is not an input but calculated.  
 people (  
-John,           0, 1, null, 0  
-Paul,           1, 1, 0, 1  
-Cale,           2, 1, 0, 1  
-Jess,           3, 1, 0, 1  
-Martha,         4, 0, 1, 2  
-Steve,          5, 1, 1, 2  
-Jeff,           6, 1, 2, 2  
-Mike,           7, 1, 2, 2  
-Darth Vader,    8, 1, 2, 2  
-Heck,           9, 0, 3, 2  
-Perry,         10, 1, 3, 2  
+John,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0, 1, null, 0  
+Paul,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1, 1, 0, 1  
+Cale,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2, 1, 0, 1  
+Jess,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3, 1, 0, 1  
+Martha,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4, 0, 1, 2  
+Steve,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5, 1, 1, 2  
+Jeff,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6, 1, 2, 2  
+Mike,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7, 1, 2, 2  
+Darth Vader,&nbsp;&nbsp;&nbsp;&nbsp;8, 1, 2, 2  
+Heck,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9, 0, 3, 2  
+Perry,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10, 1, 3, 2  
 Luke Skywalker,11, 1, 8, 3  
 add more people  
 )  
