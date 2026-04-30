@@ -22,8 +22,8 @@ find generation of parent and add 1 to find generation of new person.
 inputs(person A, person B)  
 let gen1 = person A generation  
 let gen2 = person B generation  
-let parent1 = person A parent  
-let parent2 = person B parent  
+let parent1 = person A parentslot  
+let parent2 = person B parentslot  
 let gendiff = gen1 - gen2  
 
 ###### Person A is later generation  
