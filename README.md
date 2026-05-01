@@ -13,7 +13,7 @@ Darth Vader,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8, 1, 2, 2
 Heck,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9, 0, 3, 2  
 Perry,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10, 1, 3, 2  
 Luke Skywalker,11, 1, 8, 3  
-add more people  
+add more people
 )  
 ### Position calculation  
 find generation of parent and add 1 to find generation of new person.  
