@@ -27,8 +27,8 @@ let parent2 = person B parentslot
 let gendiff = gen1 - gen2  
 
 ###### Person A is later generation  
-if gendiff < 0  
-{possible relations are child, nephew/niece, grandchild, great ... grandchild}  
+if gendiff > 0  
+{possible relations are child, nephew/niece, great ... nephew/niece, grandchild, great ... grandchild}  
 &nbsp;if gendiff == -1  
 &nbsp;{possible relations are child, nephew/niece}  
 &nbsp;&nbsp;if parent1 == person B name  
@@ -44,8 +44,8 @@ if gendiff < 0
 &nbsp;return {relation is (# of greats = -gendiff - 2) grandchild}  
 
 ###### Person A is earlier generation  
-else if gendiff > 0  
-{possible relations are parent, uncle/aunt, grandparent, great ... grandparent}  
+else if gendiff < 0  
+{possible relations are parent, uncle/aunt, great ... uncle/aunt, grandparent, great ... grandparent}  
 &nbsp;if gendiff == 1  
 &nbsp;{possible relations are parent, uncle/aunt}  
 &nbsp;&nbsp;if parent2 == person A name  
@@ -56,12 +56,19 @@ else if gendiff > 0
 &nbsp;&nbsp;&nbsp;else  
 &nbsp;&nbsp;&nbsp;return {relation is uncle}  
 &nbsp;else  
-&nbsp;{possible relations are grnadparent, great ... grandparent}  
-&nbsp;return {relation is (# of great = gendiff - 2) grandparent}  
+&nbsp;&nbsp;if person after going back generations from person A by the gendiff == person B  
+&nbsp;&nbsp;{possible relations are uncle/aunt, great ... uncle/aunt} 
+&nbsp;&nbsp;&nbsp;if person B gender == 0
+&nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) aunt}  
+&nbsp;&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) uncle}  
+&nbsp;&nbsp;else  
+&nbsp;&nbsp;&nbsp;{possible relations are grandparent, great ... grandparent}  
+&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) grandparent}  
 
 ###### Same generation  
 else if gendiff == 0  
-{possible relations are simbling, cousin, self}  
+{possible relations are sibling, cousin, self}  
 &nbsp;if parent1 == parent2  
 &nbsp;{possible relations are sibling, self}  
 &nbsp;&nbsp;if person A name == person B name  
