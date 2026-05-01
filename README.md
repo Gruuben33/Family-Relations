@@ -57,8 +57,8 @@ else if gendiff < 0
 &nbsp;&nbsp;&nbsp;return {relation is uncle}  
 &nbsp;else  
 &nbsp;&nbsp;if person after going back generations from person A by the gendiff == person B  
-&nbsp;&nbsp;{possible relations are uncle/aunt, great ... uncle/aunt} 
-&nbsp;&nbsp;&nbsp;if person B gender == 0
+&nbsp;&nbsp;{possible relations are uncle/aunt, great ... uncle/aunt}  
+&nbsp;&nbsp;&nbsp;if person B gender == 0  
 &nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) aunt}  
 &nbsp;&nbsp;&nbsp;else  
 &nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) uncle}  
