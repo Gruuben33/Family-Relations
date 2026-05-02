@@ -44,19 +44,18 @@ if gendiff == 0:
 &nbsp;&nbsp;&nbsp;return steps
 &nbsp;else:  
 &nbsp;&nbsp;steps.push(start gen)  
-&nbsp;&nbsp;return steps
-else:
-&nbsp;steps.push(parent)
-&nbsp;return checklineage function part 2 (family[start parentslot], end, steps)
+&nbsp;&nbsp;return steps  
+else:  
+&nbsp;steps.push(parent)  
+&nbsp;return checklineage function part 2 (family[start parentslot], end, steps)  
 
 
 # main
-parent = 0  
-self = 1  
-sibling = 2  
-cousin step will be the generation #
-steps = [] empty array
-family = [] empty array
+let parent = 0  
+let self = 1  
+let sibling = 2  
+cousin step will be the generation #  
+family = [] empty array  
 push the list of new people into array  
 print the names of everyone (figure out a sensible way to present family tree)  
 pick random between 0 and length of array twice, save person at array at random number to variables. Check lineage function  
