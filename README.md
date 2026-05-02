@@ -41,7 +41,7 @@ if gendiff == 0:
 &nbsp;&nbsp;&nbsp;return steps  
 &nbsp;&nbsp;else:  
 &nbsp;&nbsp;&nbsp;steps.push(sibling)  
-&nbsp;&nbsp;&nbsp;return steps
+&nbsp;&nbsp;&nbsp;return steps  
 &nbsp;else:  
 &nbsp;&nbsp;steps.push(start gen)  
 &nbsp;&nbsp;return steps  
