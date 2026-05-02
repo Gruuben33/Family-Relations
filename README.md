@@ -15,72 +15,48 @@ Perry,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Luke Skywalker,11, 1, 8, 3  
 add more people  
 )  
-### Position calculation  
+
+### Generation calculation  
 find generation of parent and add 1 to find generation of new person.  
 
 ## Check lineage function  
 inputs(person A, person B)  
-let gen1 = person A generation  
-let gen2 = person B generation  
-let parent1 = person A parentslot  
-let parent2 = person B parentslot  
-let gendiff = gen1 - gen2  
+let start = null  
+let end = null  
+if person A gen < person B gen:  
+&nbsp;start = person B  
+&nbsp;end = person A  
+else:  
+&nbsp;start = person A  
+&nbsp;end = person B  
+return check lineage function part 2 (start, end)  
 
-###### Person A is later generation  
-if gendiff > 0  
-{possible relations are child, nephew/niece, great ... nephew/niece, grandchild, great ... grandchild}  
-&nbsp;if gendiff == -1  
-&nbsp;{possible relations are child, nephew/niece}  
-&nbsp;&nbsp;if parent1 == person B name  
-&nbsp;&nbsp;return {relation is child}  
-&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;if person A gender == 0  
-&nbsp;&nbsp;&nbsp;return {relation is niece}  
-&nbsp;&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;return {relation is nephew}  
-&nbsp;else  
-&nbsp;&nbsp;if (expand)
-&nbsp;{possible relations are grandchild, great ... grandchild}  
-&nbsp;return {relation is (# of greats = -gendiff - 2) grandchild}  
-
-###### Person A is earlier generation  
-else if gendiff < 0  
-{possible relations are parent, uncle/aunt, great ... uncle/aunt, grandparent, great ... grandparent}  
-&nbsp;if gendiff == 1  
-&nbsp;{possible relations are parent, uncle/aunt}  
-&nbsp;&nbsp;if parent2 == person A name  
-&nbsp;&nbsp;return {relation is parent}  
-&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;if person B gender == 0  
-&nbsp;&nbsp;&nbsp;return {relation is aunt}  
-&nbsp;&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;return {relation is uncle}  
-&nbsp;else  
-&nbsp;&nbsp;if person after going back generations from person A by the gendiff == person B  
-&nbsp;&nbsp;{possible relations are uncle/aunt, great ... uncle/aunt}  
-&nbsp;&nbsp;&nbsp;if person B gender == 0  
-&nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) aunt}  
-&nbsp;&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) uncle}  
-&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;{possible relations are grandparent, great ... grandparent}  
-&nbsp;&nbsp;&nbsp;return {relation is (# of great = gendiff - 2) grandparent}  
-
-###### Same generation  
-else if gendiff == 0  
-{possible relations are sibling, cousin, self}  
-&nbsp;if parent1 == parent2  
-&nbsp;{possible relations are sibling, self}  
-&nbsp;&nbsp;if person A name == person B name  
-&nbsp;&nbsp;return {relation is self}  
-&nbsp;&nbsp;else  
-&nbsp;&nbsp;return {relation is sibling}  
-&nbsp;else  
-&nbsp;return {relation is cousin}  
+## Check lineage function part 2
+inputs(start, end, steps = [])  
+let gendiff = start gen - end gen  
+if gendiff == 0:  
+&nbsp;if start parentslot == end parentslot:  
+&nbsp;&nbsp;if start slot == end slot:  
+&nbsp;&nbsp;&nbsp;steps.push(self)  
+&nbsp;&nbsp;&nbsp;return steps  
+&nbsp;&nbsp;else:  
+&nbsp;&nbsp;&nbsp;steps.push(sibling)  
+&nbsp;&nbsp;&nbsp;return steps
+&nbsp;else:  
+&nbsp;&nbsp;steps.push(start gen)  
+&nbsp;&nbsp;return steps
+else:
+&nbsp;steps.push(parent)
+&nbsp;return checklineage function part 2 (family[start parentslot], end, steps)
 
 
-# main  
-create empty array  
+# main
+parent = 0  
+self = 1  
+sibling = 2  
+cousin step will be the generation #
+steps = [] empty array
+family = [] empty array
 push the list of new people into array  
 print the names of everyone (figure out a sensible way to present family tree)  
 pick random between 0 and length of array twice, save person at array at random number to variables. Check lineage function  
