@@ -29,7 +29,7 @@ if person A gen < person B gen:
 else:  
 &nbsp;start = person A  
 &nbsp;end = person B  
-return check lineage function part 2 (start, end)  
+return start, end  
 
 ## Check lineage function part 2
 inputs(start, end, steps = [])  
@@ -49,6 +49,31 @@ else:
 &nbsp;steps.push(parent)  
 &nbsp;return checklineage function part 2 (family[start parentslot], end, steps)  
 
+## check relation function
+inputs(steps)  
+great = gendiff - 1  
+last step = steps.length - 1
+if steps[last step] == 1:  
+&nbsp;if gendiff == > 0:  
+&nbsp;&nbsp;if gendiff > 1:  
+&nbsp;&nbsp;&nbsp;message = `${start} is ${end}'s ${greats function (great)} grandparent`  
+&nbsp;&nbsp;else:  
+&nbsp;&nbsp;&nbsp;message = `${start} is ${end}'s parent`  
+&nbsp;else:  
+&nbsp;&nbsp;message = `${start} is ${end}`
+elif steps[last step] == 2:  
+&nbsp;if gendiff > 0:  
+&nbsp;&nbsp;message = `${start} is ${end}'s ${greats function (great)} uncle`  
+&nbsp;else:  
+&nbsp;&nbsp;message = `${start} is ${end}'s sibling`  
+
+## greats function
+inputs(# of greats, text = "")  
+if # of greats == 0:  
+&nbsp;return text  
+else:  
+&nbsp;return greats function (# of greats - 1, text)  
+
 
 # main
 let parent = 0  
@@ -58,5 +83,9 @@ cousin step will be the generation #
 family = [] empty array  
 push the list of new people into array  
 print the names of everyone (figure out a sensible way to present family tree)  
-pick random between 0 and length of array twice, save person at array at random number to variables. Check lineage function  
-print results  
+pick random between 0 and length of array twice, save person at array at random number to variables.  
+let start = check lineage function[0]  
+let end = checklineage function[1]  
+let steps = check lineage function part 2  
+let message = check relation function (steps)  
+print message  
