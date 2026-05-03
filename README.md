@@ -60,7 +60,7 @@ if steps[last step] == 1:
 &nbsp;&nbsp;else:  
 &nbsp;&nbsp;&nbsp;message = `${start} is ${end}'s parent`  
 &nbsp;else:  
-&nbsp;&nbsp;message = `${start} is ${end}`
+&nbsp;&nbsp;message = `${start} is ${end}`  
 elif steps[last step] == 2:  
 &nbsp;if gendiff > 0:  
 &nbsp;&nbsp;message = `${start} is ${end}'s ${greats function (great)} uncle`  
