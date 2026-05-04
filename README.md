@@ -20,7 +20,7 @@ add more people
 find generation of parent and add 1 to find generation of new person.  
 
 ## Check lineage function  
-inputs(person A, person B)  
+inputs(person A, person B, which function)  
 let start = null  
 let end = null  
 if person A gen < person B gen:  
@@ -49,12 +49,29 @@ else:
 &nbsp;steps.push(parent)  
 &nbsp;return checklineage function part 2 (family[start parentslot], end, steps)  
 
+## find cousin function
+inputs(start, end, dict = {})  
+if dict == {}: <empty dict>  
+&nbsp;dict[0] = []  
+&nbsp;dict[1] = []  
+let gendiff = start gen - end gen  
+if gendiff == 0:  
+&nbsp;if start slot == end slot:  
+&nbsp;&nbsp;return dict  
+&nbsp;else:  
+&nbsp;&nbsp;dict[0].append(start parentslot)  
+&nbsp;&nbsp;dict[1].append(end parent slot)  
+else:  
+&nbsp;dict[0].append(start parentslot)  
+return find cousin function (family[start parentslot], family[end parentslot], dict)  
+
+
 ## check relation function
 inputs(steps)  
 great = gendiff - 1  
 last step = steps.length - 1
 if steps[last step] == 1:  
-&nbsp;if gendiff == > 0:  
+&nbsp;if gendiff > 0:  
 &nbsp;&nbsp;if gendiff > 1:  
 &nbsp;&nbsp;&nbsp;message = `${start} is ${end}'s ${greats function (great)} grandparent`  
 &nbsp;&nbsp;else:  
@@ -66,6 +83,35 @@ elif steps[last step] == 2:
 &nbsp;&nbsp;message = `${start} is ${end}'s ${greats function (great)} uncle`  
 &nbsp;else:  
 &nbsp;&nbsp;message = `${start} is ${end}'s sibling`  
+elif steps[last step] > 2:  
+&nbsp;let lineage = cousin function(checkfamily relations(start, end))  
+&nbsp;let distance = null  
+&nbsp;let difference = null  
+&nbsp;let removed = null
+&nbsp;if lineage[0].length == 2:  
+&nbsp;&nbsp;distance = "first"  
+&nbsp;elif lineage[0].length == 3:  
+&nbsp;&nbsp;distance = "second"  
+&nbsp;elif lineage[0].length == 4:  
+&nbsp;&nbsp;distance = "third"  
+&nbsp;else:  
+&nbsp;&nbsp;distance = "i don't count that high"  
+&nbsp;let stepsdiff = lineage[0].length - lineage[1].length  
+&nbsp;if stepsdiff > 0:  
+&nbsp;&nbsp;removed = true  
+&nbsp;&nbsp;if stepsdiff == 1:  
+&nbsp;&nbsp;&nbsp;difference = "once"  
+&nbsp;&nbsp;elif stepsdiff == 2:  
+&nbsp;&nbsp;&nbsp;difference = "twice"  
+&nbsp;&nbsp;elif stepsdiff == 3:  
+&nbsp;&nbsp;&nbsp;difference = "thrice"  
+&nbsp;&nbsp;else:  
+&nbsp;&nbsp;&nbsp;difference = "i don't count that high"
+&nbsp;if removed == true:  
+&nbsp;&nbsp;message = `${start} is ${end's} ${distance} cousin ${difference} removed`  
+&nbsp;else:  
+&nbsp;&nbsp;message = `${start} is ${end's} ${distance} cousin`  
+
 
 ## greats function
 inputs(# of greats, text = "")  
