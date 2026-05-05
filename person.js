@@ -3,12 +3,9 @@ class person {
         this.name = name;
         this.gender = gender;
         this.parent = parent;
-        this.generation = null;
-        if (this.parent == null) {
-            this.generation = 0;
-        }
-        else {
-            this.generation = family[this.parent].generation + 1;
+        this.generation = 0;
+        if (this.parent != null) {
+            this.generation = this.parent.generation + 1;
         }
     }
 }
