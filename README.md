@@ -69,7 +69,7 @@ return find cousin function (family[start parentslot], family[end parentslot], d
 ## check relation function
 inputs(steps)  
 great = gendiff - 1  
-last step = steps.length - 1
+last step = steps.length - 1  
 if steps[last step] == 1:  
 &nbsp;if gendiff > 0:  
 &nbsp;&nbsp;if gendiff > 1:  

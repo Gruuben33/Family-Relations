@@ -3,7 +3,7 @@ class person {
         this.name = name;
         this.gender = gender;
         this.parent = parent;
-        this.generation = 0;
+        this.generation = 1;
         if (this.parent != null) {
             this.generation = this.parent.generation + 1;
         }
