@@ -2,21 +2,51 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background("darkgrey");
     textSize(16);
-    fill("black");
 
-    let john = new person("John", 1)
-    let paul = new person("Paul", 1, john)
-    let cale = new person("Cale", 1, john)
-    let jess = new person("Jess", 0, john)
-    let martha = new person("Martha", 0, paul)
-    let steve = new person("Steve", 1, paul)
-    let jeff = new person("Jeff", 1, cale)
-    let mike = new person("Mike", 1, cale)
-    let darthvader = new person("DarthVader", 1, cale)
-    let heck = new person("Heck", 0, jess)
-    let perry = new person("Perry", 1, jess)
-    let luke = new person("Luke Skywalker", 1, darthvader)
-    let family = [john, paul, cale, jess, martha, steve, jeff, mike, darthvader, heck, perry, luke];
+
+    let quincy = new person("Quincy", 1)
+
+    let gwendolin = new person("Gwen", 0, quincy)
+    let strikerJones = new person("Striker", 1, quincy)
+
+    let obynGreenfoot = new person("Obyn", 1, gwendolin)
+    let captainChurchill = new person("Churchill", 1, gwendolin)
+    let benjamin = new person("Ben", 1, strikerJones)
+    let ezili = new person("Ezili", 0, strikerJones)
+
+    let mortarMonkey = new person("Mortar", 1, obynGreenfoot)
+    let iceMonkey = new person("Ice", 0, obynGreenfoot)
+    let glueMonkey = new person("Glue", 0, captainChurchill)
+    let bombShooter = new person("Bomb", 1, captainChurchill)
+    let sniperMonkey = new person("Sniper", 1, benjamin)
+    let monkeySub = new person("Sub", 0, benjamin)
+    let monkeyBuccaneer = new person("Bucc", 1, ezili)
+    let monkeyAce = new person("Ace", 1, ezili)
+
+    let heliPilot = new person("Heli", 1, mortarMonkey)
+    let superMonkey = new person("Super", 1, mortarMonkey)
+    let ninjaMonkey = new person("Ninja", 0, iceMonkey)
+    let alchemist = new person("Alch", 1, iceMonkey)
+    let druid = new person("Druid", 1, glueMonkey)
+    let spikeFactory = new person("Spike", 0, glueMonkey)
+    let monkeyVillage = new person("Village", 1, bombShooter)
+    let engineerMonkey = new person("Engineer", 0, bombShooter)
+    let wizardMonkey = new person("Wizard", 0, sniperMonkey)
+    let bombShooter2 = new person("Bomb II", 1, sniperMonkey)
+    let dartMonkey = new person("Dart", 1, monkeySub)
+    let boomerangMonkey = new person("Boomer", 0, monkeySub)
+    let agentDart = new person("Agent", 1, monkeyBuccaneer)
+    let spikeFactory2 = new person("Spike II", 0, monkeyBuccaneer)
+    let iceMonkey2 = new person("Ice II", 1, monkeyAce)
+    let glueMonkey2 = new person("Glue II", 0, monkeyAce)
+
+    let family = [
+        quincy,
+        gwendolin, strikerJones,
+        obynGreenfoot, captainChurchill, benjamin, ezili,
+        mortarMonkey, iceMonkey, glueMonkey, bombShooter, sniperMonkey, monkeySub, monkeyBuccaneer, monkeyAce,
+        heliPilot, superMonkey, ninjaMonkey, alchemist, druid, spikeFactory, monkeyVillage, engineerMonkey, wizardMonkey, bombShooter2, dartMonkey, boomerangMonkey, agentDart, spikeFactory2, iceMonkey2, glueMonkey2
+    ];
 
     main(family)
 }
@@ -29,23 +59,7 @@ function main(family) {
     let end = setRoute(personA, personB)[1]
     let steps = {"parent": 0, "self": 1, "sibling": 2};
     let route = checkLineage(start, end, family, steps);
-    text(`${start.name}`, windowWidth/2, windowHeight/2 - 50)
-    text(`${end.name}`, windowWidth/2, windowHeight/2)
-    console.log(route);
     console.log(message(start, end, route));
-}
-
-function drawFamily(family) {
-    let count = 0;
-    let currentGen = 0;
-    for (let i = 0; i < family.length; i++) {
-        if (currentGen != family[i].generation) {
-            currentGen = family[i].generation;
-            count = 0;
-        }
-        text(family[i].name, 50 + (count * 120), 50 + (family[i].generation * 40));
-        count++;
-    }
 }
 
 function setRoute(personA, personB) {
@@ -88,7 +102,7 @@ function message(start, end, route) {
     if (lastStep == 1) {
         if (gendiff > 0) {
             if (gendiff > 1) {
-                return `${end.name} is ${start.name}'s ${manyGreats(greats)} grandparent`
+                return `${end.name} is ${start.name}'s ${manyGreats(greats)}grandparent`
             } else {
                 return `${end.name} is ${start.name}'s parent`
             }
@@ -97,7 +111,7 @@ function message(start, end, route) {
         }
     } else if (lastStep == 2) {
         if (gendiff > 0) {
-            return `${end.name} is ${start.name}'s uncle/aunt`
+            return `${end.name} is ${start.name}'s ${manyGreats(greats+1)}uncle/aunt`
         } else {
             return `${end.name} is ${start.name}'s sibling`
         }
@@ -107,8 +121,8 @@ function message(start, end, route) {
 }
 
 function manyGreats(greats) {
-    if (greats == 0) {
-        return;
+    if (greats <= 0) {
+        return "";
     } else {
         let message = ""
         for (let i = 0; i < greats; i++) {
@@ -126,21 +140,23 @@ function cousins(start, end, gendiff, dict = {}) {
     if (gendiff == 0) {
         if (start == end) {
             let removed = dict[0].length - dict[1].length;
-                let suffix = null;
+            let suffix = "";
+            if (dict[0].length != dict[1].length) {
                 let lineage = dict[0].length - 2 - removed;
                 let stringLineage = lineage.toString()
-                let finalChar = lineage[lineage.length-1]
+                let finalChar = stringLineage[stringLineage.length-1]
                 if (finalChar == "0" && lineage != 10) {
-                    suffix = "st";
+                    suffix = "st ";
                 } else if (finalChar == "1" && lineage != 11) {
-                    suffix = "nd";
+                    suffix = "nd ";
                 } else if (finalChar == "2" && lineage != 12) {
-                    suffix = "rd";
+                    suffix = "rd ";
                 } else {
-                    suffix = "th"
+                    suffix = "th ";
                 }
-            let removedWord = null;
-            let removeMessage
+            }
+            let removedWord = "";
+            let removeMessage = "";
             if (removed == 1) {
                 removedWord = "once"
             } else if (removed == 2) {
@@ -150,19 +166,20 @@ function cousins(start, end, gendiff, dict = {}) {
             } else if (removed > 3) {
                 removedWord = "I can't count that high"
             }
-            if (removedWord != null) {
+            if (removedWord != "") {
                 removeMessage = "removed"
+            } else {
+                removed = "";
             }
-            return `${dict[0].length - removed}${suffix} cousins ${removedWord} ${removeMessage}`
-        }
-        else {
+            return `${removed}${suffix}cousins ${removedWord} ${removeMessage}`
+        } else {
             dict[0].push(start.parent);
             dict[1].push(end.parent);
         }
     } else {
         dict[0].push(start.parent);
-        dict[1].push(end.parent);
         gendiff--
+        return cousins(start.parent, end, gendiff, dict);
     }
     return cousins(start.parent, end.parent, gendiff, dict);
 }
