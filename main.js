@@ -1,7 +1,8 @@
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background("darkgrey");
-    textSize(16);
+    textSize(12);
+    textAlign(CENTER, CENTER);
 
 
     let quincy = new person("Quincy", 1)
@@ -57,6 +58,7 @@ function main(family) {
     let personB = family[floor(random(0, family.length))];
     let start = setRoute(personA, personB)[0]
     let end = setRoute(personA, personB)[1]
+    drawRelationshipBetween(end, start)
     let steps = {"parent": 0, "self": 1, "sibling": 2};
     let route = checkLineage(start, end, family, steps);
     console.log(message(start, end, route));
@@ -111,7 +113,11 @@ function message(start, end, route) {
         }
     } else if (lastStep == 2) {
         if (gendiff > 0) {
-            return `${end.name} is ${start.name}'s ${manyGreats(greats+1)}uncle/aunt`
+            if (end.gender == 0) {
+                return `${end.name} is ${start.name}'s ${manyGreats(greats)}aunt`
+            } else {
+                return `${end.name} is ${start.name}'s ${manyGreats(greats)}uncle`
+            }
         } else {
             return `${end.name} is ${start.name}'s sibling`
         }
@@ -141,19 +147,17 @@ function cousins(start, end, gendiff, dict = {}) {
         if (start == end) {
             let removed = dict[0].length - dict[1].length;
             let suffix = "";
-            if (dict[0].length != dict[1].length) {
-                let lineage = dict[0].length - 2 - removed;
-                let stringLineage = lineage.toString()
-                let finalChar = stringLineage[stringLineage.length-1]
-                if (finalChar == "0" && lineage != 10) {
-                    suffix = "st ";
-                } else if (finalChar == "1" && lineage != 11) {
-                    suffix = "nd ";
-                } else if (finalChar == "2" && lineage != 12) {
-                    suffix = "rd ";
-                } else {
-                    suffix = "th ";
-                }
+            let lineage = dict[0].length - 1 - removed;
+            let stringLineage = lineage.toString()
+            let finalChar = stringLineage[stringLineage.length-1]
+            if (finalChar == "1" && lineage != 11) {
+                suffix = "st ";
+            } else if (finalChar == "2" && lineage != 12) {
+                suffix = "nd ";
+            } else if (finalChar == "3" && lineage != 13) {
+                suffix = "rd ";
+            } else {
+                suffix = "th ";
             }
             let removedWord = "";
             let removeMessage = "";
@@ -168,10 +172,9 @@ function cousins(start, end, gendiff, dict = {}) {
             }
             if (removedWord != "") {
                 removeMessage = "removed"
-            } else {
-                removed = "";
             }
-            return `${removed}${suffix}cousins ${removedWord} ${removeMessage}`
+            let cousinLevel = lineage;
+            return `${cousinLevel}${suffix}cousins ${removedWord} ${removeMessage}`
         } else {
             dict[0].push(start.parent);
             dict[1].push(end.parent);
